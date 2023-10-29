@@ -2,7 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
-## Demo video
+## Demo video👇👇👇👇👇👇👇check out the link
+https://github.com/DODDA123SOWMYA/Hackathon-Management-system-project/blob/main/scrnli_10_29_2023_7-04-48%20PM.mp4
 
 ## Development server
 
