@@ -1,0 +1,73 @@
+<div class="video-container">
+    <video autoplay loop muted>
+        <source src="assets/v2.mp4" type="video/mp4">
+    </video>
+
+    <nav class="nav">
+        <div class="nav-left">
+            <h1><a routerLink="/home">MAKESKILL</a></h1>
+            <h3><a routerLink="/home">Home</a></h3>
+            <h3><a routerLink="/chat">chat</a></h3>
+            <h3><a routerLink="/about">contact</a></h3>
+            <h3><a routerLink="/service">services</a></h3>
+           
+
+        </div>
+        <div class="nav-right">
+            <h3><a routerLink="/register">Signup</a></h3>
+            <h3 style="background-color: #004182;"><a routerLink="/login">Login</a></h3>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="main-container">
+            <div class="character-holder">
+                <div class="mentor-holder">
+                    <button class="bot" (click)="start = false;">
+                        <p>mentor signup</p>
+                        <img src="assets/mentor.png" height="100%" width="100%" [ngClass]="{'active-bot': !start}"/>
+                    </button>
+                </div>
+                <div class="team-holder" (click)="start= true;">
+                    <button class="bot">
+                        <p>Team signup</p>
+                        <img src="assets/team.png" height="100%" width="80%" [ngClass]="{'active-bot': start}"/>
+                    </button>
+                </div>
+            </div>
+            <div class="form-container" *ngIf="start">
+                <p class="title">Team registration</p>
+                <form class="form">
+                  <input type="text" class="input" placeholder="team name">
+                  <input type="text" class="input" placeholder="leader name">
+                  <input type="email" class="input" placeholder="leader ID">
+                  <input type="password" class="input" placeholder="Password">
+                  <input type="text" class="input" placeholder="team size">
+                  
+                  <p class="page-link">
+                    <span class="page-link-label">anyhelp?</span>
+                  </p>
+                  <button class="form-btn">Sign up</button>
+                </form>
+                <p class="sign-up-label">
+                  already registerd?<span class="sign-up-link" routerLink="/login">login</span>
+                </p>
+            </div>
+            <div class="form-container" *ngIf="!start">
+                <p class="title">Mentor Signup</p>
+                <form class="form">
+                  <input type="text" class="input" placeholder="Name">
+                  <input type="email" class="input" placeholder="Email">
+                  <input type="password" class="input" placeholder="Password">
+                  <p class="page-link">
+                    <span class="page-link-label">help?</span>
+                  </p>
+                  <button class="form-btn">Signup</button>
+                </form>
+                <p class="sign-up-label">
+                  already have an account?<span class="sign-up-link" routerLink="/login">login</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

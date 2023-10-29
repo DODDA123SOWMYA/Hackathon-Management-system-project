@@ -1,0 +1,107 @@
+.container {
+  width: 200%;
+  background-color: blue;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  z-index: 2;
+  display: flex;
+  color: aliceblue;
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-between;
+  background-color: transparent;
+}
+
+.nav-left {
+  width: 40%;
+  padding-inline: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-between;
+}
+
+.nav a {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+}
+
+.nav h3 {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.nav h3:hover {
+  background-color: #004182;
+  color: aliceblue;
+}
+
+.nav-right {
+  width: 13%;
+  padding-inline: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-between;
+}
+
+.content {
+  height: 60%;
+  width: 60%;
+  position: absolute;
+  background-color: aliceblue;
+  z-index: 1;
+  top: 20%;
+  left: 20%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.services {
+  height: 100%;
+  width: 100%;
+  padding-inline: 20px;
+  color: #004182;
+}
+
+.service {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+}

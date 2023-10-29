@@ -1,0 +1,349 @@
+<div class="main-container">
+    <!-- <img src="assets/announcementbg.jpeg" height="100%" width="100%" alt="image" /> -->
+    <video autoplay loop muted>
+        <source src="assets/v5.mp4" type="video/mp4">
+    </video>
+
+    <nav class="nav" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        <div class="nav-left">
+            <h1><a routerLink="/home">MAKESKILL</a></h1>
+            <h3><a routerLink="/home">Home</a></h3>
+            <h3><a routerLink="/chat">Chat</a></h3>
+            <h3><a routerLink="/about">contact</a></h3>
+            <h3><a routerLink="/service">services</a></h3>
+        </div>
+        <div class="nav-right">
+            <h3 style="background-color: #004182; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                <a routerLink="/login"> login
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                      </svg>
+                </a>
+            </h3>
+        </div>
+    </nav>
+
+    <div class="horizontal-nav">
+        <h2 style="color: white;">My_dashboard</h2>
+        <div class="dashboard-container">
+            <div class="buttons-holder">
+                <button (click)="dashNo = 1">Latest updates</button>
+            </div>
+            <div class="buttons-holder">
+                <button (click)="dashNo = 2">Explore</button>
+            </div>
+            <div class="buttons-holder">
+                <button (click)="dashNo = 3">Team chat</button>
+            </div>
+            <div class="buttons-holder">
+                <button (click)="dashNo = 5">Check points</button>
+            </div>
+            <div class="buttons-holder">
+                <button (click)="dashNo = 4">Jury review & Voting</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container" *ngIf="dashNo == 1">
+        <div class="updates-container" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+            <h1 style="color: aliceblue;">Latest updates...</h1>
+            <div class="update-holder" *ngFor="let update of updates">
+                <div class="update-top">
+                    <h2 style="color: blueviolet;">{{update.title}}</h2>
+                    <h3 style="color: brown;">{{update.time}}</h3>
+                </div>
+                <p>{{update.description}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="global-chat-container" *ngIf="dashNo == 2">
+        <div class="post" *ngFor="let team of teamData">
+            <div class="post-head">
+                <img src={{team.imgSrc}} width="40px" alt="team" />
+                <h3>{{team.teamName}}</h3>
+            </div>
+            <div class="post-section">
+                <p>{{team.description}}</p>
+                <div [innerHTML]="team.videoSrc"></div>
+            </div>
+            <div class="post-tail">
+                <a (click)="changeBackgroundColor(team)" [style.background-color]="team.likeStatus">
+                    <p style="display: flex; justify-content: space-around; width: 70px; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-heart" viewBox="0 0 16 16">
+                            <path
+                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>Like
+                    </p>
+                </a>
+                <a>
+                    <p style="display: flex; justify-content: space-around; width: 90px; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-chat-dots" viewBox="0 0 16 16">
+                            <path
+                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            <path
+                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
+                        </svg>comment
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cardm" *ngIf="dashNo == 2">
+        <div class="card">
+            <svg class="weather" xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                viewBox="0 0 16 16">
+                <path
+                    d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z" />
+            </svg>
+            <div class="main">{{ hours | number: '2.0' }}:{{ minutes | number: '2.0' }}:{{ seconds | number: '2.0' }}
+            </div>
+            <div class="mainsub">03rd November, 2023</div>
+
+        </div>
+
+        <div class="card2">
+            <div class="upper">
+                <div class="humidity">
+                    <div class="humiditytext">
+                        <h1>Your scrore : <span style="color: rgb(23, 188, 23);">20 points</span></h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lower">
+                <div class="aqi">
+                    <div class="aqitext">
+                        <h1>Rank : <span style="color: chocolate;">1</span></h1>
+                    </div>
+                </div>
+                <div class="card3">
+                    Keep going!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-post-container" *ngIf="dashNo == 2">
+        <div tabindex="0" class="plusButton" (click)="addPost = true">
+            <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                <g mask="url(#mask0_21_345)">
+                    <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z">
+                    </path>
+                </g>
+            </svg>
+        </div>
+        <h1>Add Post</h1>
+    </div>
+
+    <div class="add-post-prompt" *ngIf="addPost">
+        <div class="add-container" style="color: rgb(19, 61, 98);">
+            <div class="add-header">
+                <img src="assets/archons.jpg" width="100px" alt="team" />
+                <h2>Continue</h2>
+                <button class="bn" (click)="addPost = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>&nbsp;Close
+                </button>
+            </div>
+            <div class="add-bottom" action="post">
+                <textarea rows="8" cols="80" placeholder="Add description"></textarea>
+                <button class="bn">Post</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- team chat -->
+    <div class="team-chat-container" *ngIf="dashNo == 3">
+        <div class="chat-messages">
+            <div class="chat-message" *ngFor="let msg of teamChat"
+                [ngClass]="{'right': msg.sender === 'Team Member 1'}">
+                <div class="msg-start">
+                    <img src="assets/team.png" alt="t" />
+                </div>
+                <div class="msg-body">
+                    <h4>{{msg.sender}}</h4>
+                    <p>{{msg.message}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="post-type-container">
+            <input type="text" placeholder="Type Message"
+                style="background-color: transparent; height: 50px; width: 80%; border-radius: 20px;" />
+            <button class="bn" style="height: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path fill="currentColor"
+                        d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z">
+                    </path>
+                </svg>
+                <span>Send</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="team-names-container" *ngIf="dashNo == 3">
+        <div class="team-name" *ngFor="let t of teamMem">
+            <h4>{{t.name}}</h4>
+        </div>
+    </div>
+
+    <!-- jury review -->
+
+    <div class="jury-chat-container" *ngIf="dashNo == 4">
+        <div class="post" *ngFor="let team of teamData">
+            <div class="post-head">
+                <img src={{team.imgSrc}} width="40px" alt="team" />
+                <h3>{{team.teamName}}</h3>
+            </div>
+            <div class="post-section">
+                <p>{{team.description}}</p>
+                <div [innerHTML]="team.videoSrc"></div>
+            </div>
+            <div class="post-tail">
+                <a (click)="changeBackgroundColor(team)" [style.background-color]="team.likeStatus">
+                    <p style="display: flex; justify-content: space-around; width: 70px; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-heart" viewBox="0 0 16 16">
+                            <path
+                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>Vote
+                    </p>
+                </a>
+                <a>
+                    <p style="display: flex; justify-content: space-around; width: 90px; cursor: pointer;"
+                        (click)="reviewStatus = true; openReviewPopup(team)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-check-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path
+                                d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                        </svg>Review
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="jury-criteria-container" *ngIf="dashNo == 4">
+        <div class="criteria-name" style="background-color: #FFE87C; color: #004182;">
+            <h4>Criteria</h4>
+        </div>
+        <div class="criteria-name" *ngFor="let t of juryCriteria">
+            <h4>{{t.name}}</h4>
+        </div>
+    </div>
+
+    <div class="jury-review" *ngIf="reviewStatus">
+        <div class="jury-container" style="color: rgb(19, 61, 98);">
+            <div class="jury-header">
+                <img src={{selectedPost.imgSrc}} width="100px" alt="team" />
+                <h2>{{selectedPost.teamName}}</h2>
+                <button class="bn" (click)="reviewStatus = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>&nbsp;Close
+                </button>
+            </div>
+            <div class="jury-bottom" action="post">
+                <div class="jury-card">
+                    <h3>Description</h3>
+                    <p>{{selectedPost.description}}</p>
+                </div>
+                <div class="jury-card">
+                    <h3>Problem statement</h3>
+                    <p>{{selectedPost.problemSolving}}</p>
+                </div>
+                <div class="jury-card">
+                    <h3>Solution</h3>
+                    <p>{{selectedPost.solution}}</p>
+                </div>
+                <div class="jury-card">
+                    <h3>Value Proposition</h3>
+                    <p>{{selectedPost.valueProposition}}</p>
+                </div>
+                <div class="score-card">
+                    <p>Score : </p>
+                    <div class="rating">
+                        <input value="5" name="rating" id="star5" type="radio">
+                        <label for="star5"></label>
+                        <input value="4" name="rating" id="star4" type="radio">
+                        <label for="star4"></label>
+                        <input value="3" name="rating" id="star3" type="radio">
+                        <label for="star3"></label>
+                        <input value="2" name="rating" id="star2" type="radio">
+                        <label for="star2"></label>
+                        <input value="1" name="rating" id="star1" type="radio">
+                        <label for="star1"></label>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkpoint-container" *ngIf="dashNo == 5">
+        <div class="checkpoint-style">
+            <div class="checkpoint-line" style="height: 10%; background-color: #c0562d;"></div>
+            <div class="checkpoint-circle" style="background-color: #c0562d;"></div>
+            <div class="checkpoint-line" style="background-image: linear-gradient(180deg, #c0562d, aliceblue);"></div>
+            <div class="checkpoint-circle"></div>
+            <div class="checkpoint-line"></div>
+            <div class="checkpoint-circle"></div>
+            <div class="checkpoint-line" style="height: 10%;"></div>
+        </div>
+        <div class="checkpoint-holder">
+            <div class="checkpoint" *ngFor="let check of checkpointData">
+                <div class="checkpoint-top">
+                    <h2>{{check.title}}</h2>
+                    <h3>{{check.deadline}}</h3>
+                </div>
+                <div class="checkpoint-bottom">
+                    <h4>{{check.description}}</h4>
+                    <button class="check-submit" (click)="checkpointPrompt = true"> Submission
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkpoint-prompt-container" *ngIf="checkpointPrompt">
+        <div class="checkpoint-prompt">
+            <div class="checkpoint-prompt-top">
+                <label class="custum-file-upload" for="file">
+                    <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path fill="" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" clip-rule="evenodd" fill-rule="evenodd"></path> </g></svg>
+                    </div>
+                    <div class="text">
+                       <span>Click to upload file</span>
+                       </div>
+                       <input type="file" id="file">
+                    </label>                    
+            </div>
+            <div class="checkpoint-prompt-bottom">
+                <button class="bn" (click)="checkpointPrompt = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>&nbsp;Close
+                </button>
+                <button class="checksummit">
+                    <span>Submit</span>
+                  </button>
+            </div>
+        </div>
+    </div>
+</div>
